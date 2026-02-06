@@ -10,12 +10,15 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
+      transform: true,
       transformOptions: {
         exposeUnsetFields: false,
+        enableImplicitConversion: true,
       },
     }),
   );
 
   await app.listen(process.env.PORT ?? 3002);
+  console.log(`Application running on port ${process.env.PORT ?? 3002}`);
 }
 bootstrap();
